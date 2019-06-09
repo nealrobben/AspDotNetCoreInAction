@@ -2,12 +2,16 @@
 using Microsoft.AspNetCore.Mvc;
 using DistributedCaching.Models;
 using Microsoft.Extensions.Caching.Distributed;
+using System.Text;
+using System.Threading.Tasks;
 
 namespace DistributedCaching.Controllers
 {
     public class HomeController : Controller
     {
-        IDistributedCache _cache;
+        private static string cacheKey = "cachedTimeUTC";
+
+        private readonly IDistributedCache _cache;
 
         public HomeController(IDistributedCache cache)
         {
@@ -28,6 +32,20 @@ namespace DistributedCaching.Controllers
         public IActionResult Error()
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+        }
+
+        public async Task<IActionResult> Cache()
+        {
+            var cachedTime = "No cache found";
+
+            var encodedCachedTimeUTC = await _cache.GetAsync("cachedTimeUTC");
+
+            if (encodedCachedTimeUTC != null)
+            {
+                cachedTime = Encoding.UTF8.GetString(encodedCachedTimeUTC);
+            }
+
+            return new ContentResult() { Content = cachedTime };
         }
     }
 }
