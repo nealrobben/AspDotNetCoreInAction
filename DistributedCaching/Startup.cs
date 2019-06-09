@@ -39,7 +39,7 @@ namespace DistributedCaching
             services.AddDistributedRedisCache(options =>
             {
                 options.InstanceName = "Local";
-                options.Configuration = "localhost";
+                options.Configuration = "localhost:32769";
             });
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
