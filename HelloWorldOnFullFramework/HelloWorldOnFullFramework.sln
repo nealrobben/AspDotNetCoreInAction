@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.28803.156
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HelloWorldOnFullFramework", "HelloWorldOnFullFramework\HelloWorldOnFullFramework.csproj", "{C8DD2C88-7318-4D95-8721-EA3B86C828ED}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HelloWorldOnFullFramework", "HelloWorldOnFullFramework.csproj", "{C8DD2C88-7318-4D95-8721-EA3B86C828ED}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
