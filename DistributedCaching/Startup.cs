@@ -11,6 +11,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Caching.Distributed;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Caching.Redis;
 
 namespace DistributedCaching
 {
@@ -33,7 +34,13 @@ namespace DistributedCaching
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
 
-            services.AddDistributedMemoryCache();
+            //services.AddDistributedMemoryCache();
+
+            services.AddDistributedRedisCache(options =>
+            {
+                options.InstanceName = "Local";
+                options.Configuration = "localhost";
+            });
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
         }

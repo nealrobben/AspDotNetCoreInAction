@@ -38,7 +38,7 @@ namespace DistributedCaching.Controllers
         {
             var cachedTime = "No cache found";
 
-            var encodedCachedTimeUTC = await _cache.GetAsync("cachedTimeUTC");
+            var encodedCachedTimeUTC = await _cache.GetAsync(cacheKey);
 
             if (encodedCachedTimeUTC != null)
             {
